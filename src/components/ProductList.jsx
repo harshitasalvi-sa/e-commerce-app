@@ -5,7 +5,10 @@ import { fetchProducts } from "../features/products/productSlice";
 const ProductList = () => {
 
     const dispatch = useDispatch();
-    const {products, loading, error}= useSelector(state => state.products);
+    // const {products, loading, error}= useSelector(state => state.products);
+        const {entities, ids, loading, error}= useSelector(state => state.products);
+
+        const products = ids.map((id) => entities[id]);
 
     useEffect(()=>{
         dispatch(fetchProducts());
@@ -20,7 +23,7 @@ const ProductList = () => {
     }
 
   return (
-    <div className="flex-3 grid grid-cols-4">
+    <div className="flex-3 grid grid-cols-4 gap-6">
         {products && products.map((item) => (
             <ProductCard item = {item}/>
             )

@@ -6,7 +6,7 @@ const Home = () => {
   return (
     <div >
         <Navbar/>
-        <div className="flex flex-row">
+        <div className="flex flex-row gap-8 ">
             <ProductList/>
             <Cart/>
         </div>

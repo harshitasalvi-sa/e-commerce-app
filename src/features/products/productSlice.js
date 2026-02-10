@@ -1,4 +1,6 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
+import { normalizeProducts } from "./productsNormalised";
+
 
 export const fetchProducts = createAsyncThunk(
     "products/fetchProducts",
@@ -13,7 +15,9 @@ export const fetchProducts = createAsyncThunk(
 const productSlice = createSlice({
     name : "products",
     initialState :{
-        products : [],
+        //products : [],
+        entities: {},
+        ids: [],
         loading: false,
         error :null
     },
@@ -26,7 +30,12 @@ const productSlice = createSlice({
         })
         .addCase(fetchProducts.fulfilled, (state, action) =>{
             state.loading = false;
-            state.products = action.payload;
+            //state.products = action.payload;
+            
+            const normalizedData = normalizeProducts(action.payload);
+
+            state.entities = normalizedData.entities.products;
+            state.ids = normalizedData.result;
         })
         .addCase(fetchProducts.rejected, (state, action)=>{
             state.loading = false;
