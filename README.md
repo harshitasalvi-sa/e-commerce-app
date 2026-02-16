@@ -34,17 +34,16 @@ Instead of directly using React Query, I intentionally built this in stages to u
 I started with a simple Redux setup to fetch products and store them in global state.
 Handled loading and error states manually.
 This helped me understand how Redux works at a basic level.
----
 
 ### Stage 2 – Redux Thunk
 Next, I introduced `createAsyncThunk` to manage async API calls in a cleaner way.
 This improved the structure of the code and separated async logic from UI components.
----
+
 
 ### Stage 3 – Data Normalization
 Then I added `normalizr` to flatten nested API data.
 This helped in organizing state better and understanding how normalized data improves performance and scalability.
----
+
 
 ### Stage 4 – React Query (Final Version)
 Finally, I migrated product fetching to React Query.
@@ -58,7 +57,6 @@ React Query automatically handles caching and background updates, which made the
 Cart state is still managed using Redux because that is client-side state, while product data is handled by React Query as server-side state.
 
 This helped me clearly understand the difference between client state and server state.
----
 
 ## What I Learned From This Project
 
