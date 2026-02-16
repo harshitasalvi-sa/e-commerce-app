@@ -6,6 +6,7 @@ This project is a simple e-commerce application built using React.
 I applied all the concepts I studied into single project only, and updated data fetching accordingly.
 I built this project step by step, starting from basic Redux and gradually moving towards React Query to understand how modern data handling works in real-world applications.
 
+### Deployement link : https://e-com-flame-three.vercel.app/
 
 ## Tech Stack
 
