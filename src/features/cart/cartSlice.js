@@ -1,3 +1,4 @@
+//--------------REDUX TOOLKIT--------------
 import { createSlice} from "@reduxjs/toolkit"
 
 const cartSlice = createSlice({
@@ -14,13 +15,15 @@ const cartSlice = createSlice({
             
             state.totalQuantity += 1;
             state.totalPrice += Number((newItem.price*10).toFixed());
+            //console.log("existingItem.price : ", existingItem.price)
             
             if(!existingItem){
                 state.items.push({
                     id : newItem.id,
                     title : newItem.title,
                     image : newItem.images,
-                    price : (newItem.price*10).toFixed(),
+                    // price : (newItem.price*10).toFixed(),
+                    price : newItem.price,
                     quantity : 1
                 })
             }
@@ -38,7 +41,7 @@ const cartSlice = createSlice({
             if (!existingItem) return;
 
             state.totalQuantity -= 1;
-            state.totalPrice -= existingItem.price;
+            state.totalPrice -= Number((existingItem.price*10).toFixed());
 
             if (existingItem.quantity === 1) {
                 state.items = state.items.filter(

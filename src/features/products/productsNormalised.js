@@ -1,3 +1,5 @@
+//--------------APPLIED NORMALIZATION--------------
+
 import { normalize, schema } from "normalizr";
 
 const productEntity = new schema.Entity("products");

@@ -1,7 +1,7 @@
 import {createAsyncThunk, createSlice} from "@reduxjs/toolkit"
 import { normalizeProducts } from "./productsNormalised";
 
-
+//--------------APPLIED REDUX THUNK--------------
 export const fetchProducts = createAsyncThunk(
     "products/fetchProducts",
     async () =>{
@@ -16,6 +16,7 @@ const productSlice = createSlice({
     name : "products",
     initialState :{
         //products : [],
+        //--------------Changed to normalized data--------------
         entities: {},
         ids: [],
         loading: false,

@@ -1,6 +1,6 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCart } from '../features/cart/cartSlice';
+import { addItem, clearCart, removeItem } from '../features/cart/cartSlice';
 
 const Cart = () => {
     const dispatch = useDispatch();
@@ -20,11 +20,11 @@ const Cart = () => {
                     <div className='flex flex-row w-20 justify-between align-middle m-auto'>
                         <button 
                         className='bg-gray-400 rounded-xl py-1 px-2'
-                        onClick={()=>dispatch(addItem)}>+</button>
+                        onClick={()=>dispatch(addItem(item))}>+</button>
                     <p>{item.quantity}</p>
                     <button
                     className='bg-gray-400 rounded-xl py-1 px-2' 
-                    onClick={()=>dispatch(removeItem)}>-</button>
+                    onClick={()=>dispatch(removeItem(item.id))}>-</button>
                     </div>
                 </div>
             </div>

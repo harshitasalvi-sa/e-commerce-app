@@ -1,20 +1,35 @@
 import ProductCard from "./ProductCard"
 import { useEffect}  from "react"
 import {useDispatch, useSelector} from "react-redux"
-import { fetchProducts } from "../features/products/productSlice";
+import { useQuery } from "@tanstack/react-query";
+import { fetchProducts } from "../features/products/productApi";
 const ProductList = () => {
 
     const dispatch = useDispatch();
+    //-----REDUX---------
     // const {products, loading, error}= useSelector(state => state.products);
-        const {entities, ids, loading, error}= useSelector(state => state.products);
 
-        const products = ids.map((id) => entities[id]);
+    //-----NORMALISATION--------
+    //const {entities, ids, loading, error}= useSelector(state => state.products);
+    //const products = ids.map((id) => entities[id]);
 
-    useEffect(()=>{
-        dispatch(fetchProducts());
-    }, [dispatch])
+    //-----REDUX THUNK---------
+    // useEffect(()=>{
+    //     dispatch(fetchProducts());
+    // }, [dispatch])
 
-    if(loading){
+    // if(loading){
+    //     <p>Loading...</p>
+    // }
+
+    //-------APPLIED REACT QUERY---------
+    const {data:products, isLoading, error} = useQuery({
+        queryKey: ["products"],
+        queryFn : fetchProducts,
+        staleTime: 1000 * 60 * 5,
+    });
+
+    if(isLoading){
         <p>Loading...</p>
     }
 

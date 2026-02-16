@@ -4,7 +4,8 @@ import productReducer from "../features/products/productSlice"
 export const store = configureStore({
     reducer : {
         cart : cartReducer,
-        products : productReducer,
+        //Initially I used redux for fetching products
+        //products : productReducer,
     }
 })
 
